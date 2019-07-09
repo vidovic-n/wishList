@@ -1,0 +1,59 @@
+<ion-header mode="md">
+  <ion-toolbar color="light">
+    <ion-title color="primary">
+      My Wish List
+    </ion-title>
+  <ion-buttons slot="end">
+    <ion-button color="primary" shape="round" fill="solid">
+      Add item
+      <ion-icon slot="end" name="add"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-toolbar>
+      <ion-list>
+          <ion-item slot="start">
+            <ion-select value="all" okText="Okay" cancelText="Dismiss" >
+              <ion-select-option value="all">All</ion-select-option>
+              <ion-select-option value="technology">Technology</ion-select-option>
+              <ion-select-option value="food">Food</ion-select-option>
+              <ion-select-option value="clothes">Clothes</ion-select-option>
+              <ion-select-option value="cosmetics">Cosmetics</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+  </ion-toolbar> 
+
+  <ion-item>
+    <ion-label position="fixed">Title</ion-label>
+    <ion-input [(ngModel)] = "newItem.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <ion-input [(ngModel)] = "newItem.description"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addItem()">Add Item</ion-button>
+
+  <ion-list #myList>
+   
+
+      <ion-item *ngFor="let item of items">
+
+        <ion-item-sliding>
+          <ion-label >
+            <h3>{{ item.title }}</h3>
+            <ion-text color="secondary">
+              <p>{{ item.description }}</p>
+             </ion-text> 
+             <p>{{ item.category }}</p>
+          </ion-label>
+        </ion-item-sliding>
+      </ion-item>
+
+  </ion-list>
+</ion-content>
