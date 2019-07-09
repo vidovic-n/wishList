@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
 export class TabsPage {
 
   constructor() {}
+
+
+
 
 }

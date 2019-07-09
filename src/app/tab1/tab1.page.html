@@ -1,12 +1,12 @@
 <ion-header mode="md">
-  <ion-toolbar color="light">
-    <ion-title color="primary">
+  <ion-toolbar color="primary">
+    <ion-title color="light">
       My Wish List
     </ion-title>
   <ion-buttons slot="end">
-    <ion-button color="primary" shape="round" fill="solid">
+    <ion-button color="light" shape="round" fill="solid" expand="block" routerLink="/tabs/tab1/add-form" >
       Add item
-      <ion-icon slot="end" name="add"></ion-icon>
+      <ion-icon slot="end" color="success" name="add"></ion-icon>
     </ion-button>
   </ion-buttons>
   </ion-toolbar>
@@ -27,33 +27,30 @@
         </ion-list>
   </ion-toolbar> 
 
-  <ion-item>
-    <ion-label position="fixed">Title</ion-label>
-    <ion-input [(ngModel)] = "newItem.title"></ion-input>
-  </ion-item>
-
-  <ion-item>
-      <ion-label position="fixed">Description</ion-label>
-      <ion-input [(ngModel)] = "newItem.description"></ion-input>
-  </ion-item>
-
-  <ion-button expand="full" (click)="addItem()">Add Item</ion-button>
 
   <ion-list #myList>
    
-
-      <ion-item *ngFor="let item of items">
-
-        <ion-item-sliding>
+      <ion-item-sliding *ngFor="let item of items">
+        <ion-item color="light">
+            <ion-avatar slot="start">
+                <img [src]="item.imageUrl">
+              </ion-avatar>
           <ion-label >
-            <h3>{{ item.title }}</h3>
+            <h2>{{ item.title }}</h2>
             <ion-text color="secondary">
               <p>{{ item.description }}</p>
              </ion-text> 
              <p>{{ item.category }}</p>
           </ion-label>
-        </ion-item-sliding>
-      </ion-item>
+          <ion-item-option slot="end" color="danger" (click)="deleteItem(item)" >
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item>
+
+      
+    
+      
+    </ion-item-sliding>
 
   </ion-list>
 </ion-content>

@@ -43,7 +43,7 @@ export class StorageService {
       let newItems: Item[] = [];
 
       for (let i of items) {
-        if(i.id === item.id) {
+        if (i.id === item.id) {
           newItems.push(item);
         } else {
           newItems.push(i);
