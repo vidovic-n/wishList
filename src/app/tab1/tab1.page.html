@@ -21,7 +21,6 @@
               <ion-select-option value="technology">Technology</ion-select-option>
               <ion-select-option value="food">Food</ion-select-option>
               <ion-select-option value="clothes">Clothes</ion-select-option>
-              <ion-select-option value="cosmetics">Cosmetics</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
@@ -30,10 +29,10 @@
 
   <ion-list #myList>
    
-      <ion-item-sliding *ngFor="let item of items">
+      <ion-item-sliding *ngFor="let item of items" [routerLink]="['/tabs/tab1', item.id]">
         <ion-item color="light">
             <ion-avatar slot="start">
-                <img [src]="item.imageUrl">
+                <img [src]="item?.imageUrl">
               </ion-avatar>
           <ion-label >
             <h2>{{ item.title }}</h2>
@@ -46,10 +45,6 @@
             <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-item-option>
         </ion-item>
-
-      
-    
-      
     </ion-item-sliding>
 
   </ion-list>

@@ -21,12 +21,16 @@
       <ion-input [(ngModel)] = "newItem.imageUrl"></ion-input>
   </ion-item>
 
+  <ion-item>
+      <ion-label position="fixed">Price[$]:</ion-label>
+      <ion-input [(ngModel)] = "newItem.price"></ion-input>
+  </ion-item>
+
   <ion-list>
     
   <ion-item slot="start">
       <ion-label>Category:</ion-label>
-      <ion-select value="" okText="Okay" cancelText="Dismiss" >
-        <ion-select-option value="all">All</ion-select-option>
+      <ion-select value="" okText="Okay" cancelText="Dismiss" [(ngModel)] = "newItem.category" >
         <ion-select-option value="technology">Technology</ion-select-option>
         <ion-select-option value="food">Food</ion-select-option>
         <ion-select-option value="clothes">Clothes</ion-select-option>

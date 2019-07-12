@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ loadedItem?.title}} </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="light" shape="round" fill="solid" expand="block" [routerLink]="['/tabs/tab1/edit-form', loadedItem?.id]">
+        Edit<ion-icon name="create" slot="end" color="success"></ion-icon >
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid >
+    <ion-row>
+      <ion-col no-padding>
+        <ion-img [src]="loadedItem?.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1 text-center> {{ loadedItem?.title }}</h1>
+      </ion-col>
+    </ion-row>
+    <div>
+    <ion-text mode="md">
+        <p>{{ loadedItem?.description }}</p>
+        <p>{{ loadedItem?.category}}</p>
+        <ion-item color="success">
+            <p><ion-icon name="pricetags"></ion-icon> {{ loadedItem?.price }}</p>
+          </ion-item>
+      </ion-text>
+    </div>
+  </ion-grid>
+</ion-content>

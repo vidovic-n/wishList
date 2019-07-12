@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService, Item } from '../../services/storage.service';
+import { StorageService } from '../../services/storage.service';
 import { Platform, ToastController, IonList} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
-import { Tab1Page } from '../tab1.page';
+import { Item } from 'src/app/item.model';
+
 
 const ITEMS_KEY = 'my-items';
 
@@ -26,19 +27,26 @@ export class AddFormPage implements OnInit {
 
   ngOnInit() {}
 
-  ionViewDidLeave() {
-    console.log('ioNViewDidLeave');
+  ionViewWillLeave() {
+    console.log('ioNViewWillLeaveAddForm');
     // this.storage.set(ITEMS_KEY, this.items);
    }
 
+   loadItems() {
+    this.storageService.getItems().then( items => {
+      this.items = items;
+    });
+  }
+
   addItem() {
-    this.newItem.id = Date.now();
+    this.newItem.id = (Date.now()).toString();
     this.storageService.addItem(this.newItem).then(item => {
-      this.newItem = {} as Item;
+     // this.newItem = {} as Item;
       this.showToast('Item added!');
       this.loadItems();
+      this.router.navigate(['/tabs/tab1']);
     });
-    this.router.navigate(['/tabs/tab1']);
+   // this.router.navigate(['/tabs/tab1']);
   }
 
   async showToast(msg) {
@@ -49,9 +57,5 @@ export class AddFormPage implements OnInit {
     toast.present();
   }
 
-  loadItems() {
-    this.storageService.getItems().then( items => {
-      this.items = items;
-    });
-  }
+ 
 }

@@ -17,9 +17,17 @@ const routes: Routes = [
           {
             path: 'add-form',
             loadChildren: '../tab1/add-form/add-form.module#AddFormPageModule'
-          }
-        ]
-      },
+          },
+           {
+              path: 'edit-form/:itemId',
+              loadChildren: '../tab1/edit-form/edit-form.module#EditFormPageModule'
+            },
+            {
+              path: ':itemId',
+              loadChildren: '../tab1/item-details/item-details.module#ItemDetailsPageModule'
+            }
+    ]
+  },
       {
         path: 'tab2',
         children: [
