@@ -29,17 +29,17 @@
 
   <ion-list #myList>
    
-      <ion-item-sliding *ngFor="let item of items" [routerLink]="['/tabs/tab1', item.id]">
+      <ion-item-sliding *ngFor="let item of items" [routerLink]="['/tabs/tab1', item?.id]">
         <ion-item >
             <ion-avatar slot="start">
                 <img [src]="item?.imageUrl">
               </ion-avatar>
           <ion-label >
-            <h2>{{ item.title }}</h2>
+            <h2>{{ item?.title }}</h2>
             <ion-text color="secondary">
-              <p>{{ item.description }}</p>
+              <p>{{ item?.description }}</p>
              </ion-text> 
-             <p>{{ item.category }}</p>
+             <p>{{ item?.category }}</p>
           </ion-label>
           <ion-item-option slot="end" color="danger" (click)="deleteItem(item)" >
             <ion-icon slot="icon-only" name="trash"></ion-icon>

@@ -40,6 +40,7 @@ export class AddFormPage implements OnInit {
 
   addItem() {
     this.newItem.id = (Date.now()).toString();
+    this.newItem.purchased = false;
     this.storageService.addItem(this.newItem).then(item => {
      // this.newItem = {} as Item;
       this.showToast('Item added!');

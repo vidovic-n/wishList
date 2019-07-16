@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title color="light">
-      Purchased
+      Purchased items
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  
+  <ion-list #myList>
+   
+    <ion-item-sliding *ngFor="let item of purchasedItems" >
+      <ion-item >
+          <ion-avatar slot="start">
+              <img [src]="item?.imageUrl">
+            </ion-avatar>
+        <ion-label >
+          <h2>{{ item?.title }}</h2>
+          <ion-text color="secondary">
+            <p>{{ item?.description }}</p>
+           </ion-text> 
+           <p>{{ item?.category }}</p>
+        </ion-label>
+        <ion-item-option slot="end" color="success" >
+          <ion-icon slot="icon-only" name="done-all"></ion-icon>
+        </ion-item-option>
+      </ion-item>
+  </ion-item-sliding>
+
+</ion-list>
+</ion-content>

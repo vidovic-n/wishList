@@ -42,7 +42,7 @@
 
       <ion-item>
         <ion-label>Purchased </ion-label> 
-       <ion-checkbox color="success" slot="start"></ion-checkbox>
+       <ion-checkbox color="success" slot="start" [(ngModel)] = "itemForEdit.purchased"></ion-checkbox>
      </ion-item>
   
     <ion-button expand="full" (click)="updateItem(itemForEdit)">

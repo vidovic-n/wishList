@@ -129,22 +129,22 @@ export class StorageService {
         items = [items];
       }
 
-      // this.items = this.items.filter(item => {
-      //   if (item.id !== id) {
-      //   return this.storage.set(ITEMS_KEY, items);
-      //   }
-      // });
-      console.log('itemi za delete ' + JSON.stringify(items));
-      let toKeep: Item[] = [];
-
-      for (let i of items) {
-        console.log('itemi za delete u for ' + JSON.stringify(i));
-        if (i.id !== id) {
-          toKeep.push(i);
-          console.log('-------toKeep item-i koji nisu za brisanje--------- : ' + JSON.stringify(toKeep));
+      this.items = this.items.filter(item => {
+        if (item.id !== id) {
+         return this.storage.set(ITEMS_KEY, items);
         }
-      }
-      return this.storage.set(ITEMS_KEY, toKeep);
+      });
+      // console.log('itemi za delete ' + JSON.stringify(items));
+      // let toKeep: Item[] = [];
+
+      // for (let i of items) {
+      //   console.log('itemi za delete u for ' + JSON.stringify(i));
+      //   if (i.id !== id) {
+      //     toKeep.push(i);
+      //     console.log('-------toKeep item-i koji nisu za brisanje--------- : ' + JSON.stringify(toKeep));
+      //   }
+      // }
+      return this.storage.set(ITEMS_KEY, items);
 
     });
   }

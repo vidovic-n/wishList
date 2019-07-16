@@ -42,7 +42,12 @@ export class Tab1Page implements OnInit, OnDestroy {
 
   loadItems() {
     this.storageService.getItems().then( items => {
+
       this.items = items;
+
+      if (! Array.isArray(items)) {
+        items = [items];
+      }
     });
   }
 
@@ -78,15 +83,15 @@ async showToast(msg) {
 }
 
   deleteItem(item: Item) {
-this.alertCtrl.create({
-  header: 'Are you sure?',
-   message: 'Do you really want to delete the item?',
-    buttons: [{
-      text: 'Cancel',
-      role: 'cancel'
-    }, {
-      text: 'Delete',
-      handler: () => {
+    this.alertCtrl.create({
+    header: 'Are you sure?',
+     message: 'Do you really want to delete the item?',
+      buttons: [{
+        text: 'Cancel',
+       role: 'cancel'
+     }, {
+       text: 'Delete',
+       handler: () => {
 // tslint:disable-next-line: variable-name
      this.storageService.deleteItem(item.id).then( _item => {
        this.showToast('Item removed!');
