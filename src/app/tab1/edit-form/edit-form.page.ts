@@ -35,7 +35,7 @@ export class EditFormPage implements OnInit {
         this.itemForEdit = item;
         console.log('ITEM  ' + item);
         console.log('Item ID za EDIT ' + itemId);
-        console.log('title itema za edit' + this.itemForEdit);
+        console.log('title itema za edit' + this.itemForEdit.title);
       } );
     });
   }
@@ -51,7 +51,7 @@ export class EditFormPage implements OnInit {
     this.storageService.updateItem(item).then( _item => {
       this.showToast('Item updated!');
       this.loadItems();
-      this.router.navigate(['/tabs/tab1/item-details']);
+      this.router.navigate(['/tabs/tab1']); // ovde sam izbrisala /item-details
     });
   }
 

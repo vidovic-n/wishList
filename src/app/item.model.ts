@@ -6,7 +6,8 @@ export class Item {
     public description: string,
     public imageUrl: string,
     public category: string,
-    public price: number
+    public price: number,
+    public purchased: boolean
     ) {}
 
 }

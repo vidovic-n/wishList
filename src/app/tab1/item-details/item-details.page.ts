@@ -12,7 +12,7 @@ import { Item } from 'src/app/item.model';
 export class ItemDetailsPage implements OnInit {
 
   items: Item[] = [];
-  loadedItem  = new Item ('', '', '', '', '',  34);
+  loadedItem  = new Item ('', '', '', '', '',  34, false);
   // loadedItem: Item = {} as Item;
 
 

@@ -90,25 +90,32 @@ export class StorageService {
       //   }
       //   return this.storage.set(ITEMS_KEY, oneItem);
       // });
-      
  }
 
   updateItem(item: Item) {
+    console.log('updateovani item nakon edita3');
     return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
-      if (!items || items.length === 0) {
-        return null;
+      // if (!items || items.length === 0) {
+      //   console.log('updateovani item nakon edita7');
+      //   return null;
+      // }
+       let newItems: Item[] = [];
+       // newItem mi je bio prazan niz i storage sam setovala na njega
+      // console.log('itemi za edit ' + JSON.stringify(items));
+       if (! Array.isArray(items)) {
+        items = [items];
       }
-      let newItems: Item[] = [];
-
-      for (let i of items) {
-        if (i.id === item.id) {
+       for (let i of items) {
+       console.log('updateovani item nakon edita6');
+       if (i.id === item.id) {
           newItems.push(item);
-          console.log('updateovani item nakon edita' + newItems);
         } else {
           newItems.push(i);
         }
       }
-      return this.storage.set(ITEMS_KEY, newItems);
+       console.log('updateovani item nakon edita4' + newItems);
+      // items.push(newItem);
+       return this.storage.set(ITEMS_KEY, newItems);
     });
   }
 
@@ -117,11 +124,24 @@ export class StorageService {
       if (!items || items.length === 0) {
         return null;
       }
+
+      if (! Array.isArray(items)) {
+        items = [items];
+      }
+
+      // this.items = this.items.filter(item => {
+      //   if (item.id !== id) {
+      //   return this.storage.set(ITEMS_KEY, items);
+      //   }
+      // });
+      console.log('itemi za delete ' + JSON.stringify(items));
       let toKeep: Item[] = [];
 
       for (let i of items) {
+        console.log('itemi za delete u for ' + JSON.stringify(i));
         if (i.id !== id) {
           toKeep.push(i);
+          console.log('-------toKeep item-i koji nisu za brisanje--------- : ' + JSON.stringify(toKeep));
         }
       }
       return this.storage.set(ITEMS_KEY, toKeep);

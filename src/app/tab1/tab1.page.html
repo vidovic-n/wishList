@@ -30,7 +30,7 @@
   <ion-list #myList>
    
       <ion-item-sliding *ngFor="let item of items" [routerLink]="['/tabs/tab1', item.id]">
-        <ion-item color="light">
+        <ion-item >
             <ion-avatar slot="start">
                 <img [src]="item?.imageUrl">
               </ion-avatar>

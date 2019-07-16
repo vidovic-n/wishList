@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="primary">
-      <ion-title color="light">Add New Item</ion-title>
+      <ion-title color="light">Edit Item </ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -39,6 +39,11 @@
         </ion-select>
       </ion-item>
       </ion-list>
+
+      <ion-item>
+        <ion-label>Purchased </ion-label> 
+       <ion-checkbox color="success" slot="start"></ion-checkbox>
+     </ion-item>
   
     <ion-button expand="full" (click)="updateItem(itemForEdit)">
       Save changes
