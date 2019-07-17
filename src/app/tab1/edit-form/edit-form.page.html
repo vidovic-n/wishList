@@ -30,7 +30,7 @@
       
     <ion-item slot="start">
         <ion-label>Category:</ion-label>
-        <ion-select value="" okText="Okay" cancelText="Dismiss" [(ngModel)] = "itemForEdit.price">
+        <ion-select value="" okText="Okay" cancelText="Dismiss" [(ngModel)] = "itemForEdit.category">
           <ion-select-option value="technology">Technology</ion-select-option>
           <ion-select-option value="food">Food</ion-select-option>
           <ion-select-option value="clothes">Clothes</ion-select-option>
@@ -40,13 +40,13 @@
       </ion-item>
       </ion-list>
 
-      <ion-item>
-        <ion-label>Purchased </ion-label> 
+    <ion-item>
+       <ion-label>Purchased </ion-label> 
        <ion-checkbox color="success" slot="start" [(ngModel)] = "itemForEdit.purchased"></ion-checkbox>
-     </ion-item>
+    </ion-item>
   
     <ion-button expand="full" (click)="updateItem(itemForEdit)">
-      Save changes
+       Save changes
       <ion-icon slot="end" color="success" name="checkmark-circle-outline"></ion-icon>
     </ion-button>
   

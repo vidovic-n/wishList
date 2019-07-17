@@ -4,42 +4,25 @@ import { ItemDetailsPage } from '../tab1/item-details/item-details.page';
 import { Item } from '../item.model';
 import { Router } from '@angular/router';
 
-
-// export interface Item {
-//   id: string;
-//   title: string;
-//   description: string;
-//   imageUrl: string;
-//   category: string;
-//   price: number;
-// }
-
-
 const ITEMS_KEY = 'my-items';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-
-
-// dodala sam =[]
   private items: Item[] = [];
 
-  constructor(private storage: Storage, private router: Router) { }
+  constructor(private storage: Storage, private router: Router) {}
 
   addItem(item: Item) {
     return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
       if (items) {
         items.push(item);
         return this.storage.set(ITEMS_KEY, items);
-
       } else {
         return this.storage.set(ITEMS_KEY, [item]);
       }
     });
-
-
   }
 
   getItems() {
@@ -47,75 +30,75 @@ export class StorageService {
   }
 
   getItemForDetails(itemId: string) {
-
-      return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
-        if (!items || items.length === 0) {
-          return null;
+    return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
+      if (!items || items.length === 0) {
+        return null;
+      }
+      let oneItem: Item;
+      for (let i of items) {
+        if (i.id === itemId) {
+          oneItem = i;
         }
-        let oneItem: Item ;
-        for (let i of items) {
-          if (i.id === itemId) {
-            oneItem = i;
-          }
-        }
-        return this.storage.set(ITEMS_KEY, oneItem);
-      });
+      }
+      return this.storage.set(ITEMS_KEY, oneItem);
+    });
   }
 
   getItem(itemId: string) {
-  //   return {
-  //     ...this.storage.get(ITEMS_KEY).then(item => {
-  //       if(item.id == itemId){
-  //     return item = {} as Item;
-  //       }
-  //   })
-  // };
+    //   return {
+    //     ...this.storage.get(ITEMS_KEY).then(item => {
+    //       if(item.id == itemId){
+    //     return item = {} as Item;
+    //       }
+    //   })
+    // };
 
-  return this.storage.get(ITEMS_KEY).then(item => {
-    if (item.id === itemId) {
-      return item;
-    }
-    return this.storage.set(ITEMS_KEY, item);
-  });
+    return this.storage.get(ITEMS_KEY).then(item => {
+      if (!item || item === 0) {  //OVO SAM DODALA
+             return null;
+           }
+           
+      if (item.id === itemId) {
+        return item;
+      }
+      return this.storage.set(ITEMS_KEY, item);
+    });
 
-      // return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
-      //   if (!items || items.length === 0) {
-      //     return null;
-      //   }
-      //   let oneItem: Item ;
-      //   for (let i of items) {
-      //     if (i.id === itemId) {
-      //       oneItem = i;
-      //     }
-      //   }
-      //   return this.storage.set(ITEMS_KEY, oneItem);
-      // });
- }
+    // return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
+    //   if (!items || items.length === 0) {
+    //     return null;
+    //   }
+    //   let oneItem: Item ;
+    //   for (let i of items) {
+    //     if (i.id === itemId) {
+    //       oneItem = i;
+    //     }
+    //   }
+    //   return this.storage.set(ITEMS_KEY, oneItem);
+    // });
+  }
 
   updateItem(item: Item) {
     console.log('updateovani item nakon edita3');
     return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
       // if (!items || items.length === 0) {
-      //   console.log('updateovani item nakon edita7');
       //   return null;
       // }
-       let newItems: Item[] = [];
-       // newItem mi je bio prazan niz i storage sam setovala na njega
+      let newItems: Item[] = [];
       // console.log('itemi za edit ' + JSON.stringify(items));
-       if (! Array.isArray(items)) {
+      if (!Array.isArray(items)) {
         items = [items];
       }
-       for (let i of items) {
-       console.log('updateovani item nakon edita6');
-       if (i.id === item.id) {
+      for (let i of items) {
+        if (i.id === item.id) {
           newItems.push(item);
         } else {
           newItems.push(i);
         }
       }
-       console.log('updateovani item nakon edita4' + newItems);
+      console.log('updateovani item nakon edita4' + newItems);
       // items.push(newItem);
-       return this.storage.set(ITEMS_KEY, newItems);
+      return this.storage.set(ITEMS_KEY, newItems);
     });
   }
 
@@ -125,13 +108,13 @@ export class StorageService {
         return null;
       }
 
-      if (! Array.isArray(items)) {
+      if (!Array.isArray(items)) {
         items = [items];
       }
 
       this.items = this.items.filter(item => {
         if (item.id !== id) {
-         return this.storage.set(ITEMS_KEY, items);
+          return this.storage.set(ITEMS_KEY, items);
         }
       });
       // console.log('itemi za delete ' + JSON.stringify(items));
@@ -145,8 +128,6 @@ export class StorageService {
       //   }
       // }
       return this.storage.set(ITEMS_KEY, items);
-
     });
   }
-
 }

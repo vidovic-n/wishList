@@ -35,7 +35,6 @@ ngOnInit() {
     console.log('Item ID' + itemId);
     console.log(this.storageService.getItem(itemId));
 
-
     this.storageService.getItemForDetails(itemId).then(item => {
       this.loadedItem = item;
     } );

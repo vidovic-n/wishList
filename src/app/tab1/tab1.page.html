@@ -16,9 +16,9 @@
     <ion-toolbar>
       <ion-list>
           <ion-item slot="start">
-            <ion-select value="all" okText="Okay" cancelText="Dismiss" >
-              <ion-select-option value="all">All</ion-select-option>
-              <ion-select-option value="technology">Technology</ion-select-option>
+            <ion-select  okText="Okay" cancelText="Dismiss"  (ionChange)="filterCategory($event)">
+              <ion-select-option value="all" >All</ion-select-option>
+              <ion-select-option value="technology" >Technology</ion-select-option>
               <ion-select-option value="food">Food</ion-select-option>
               <ion-select-option value="clothes">Clothes</ion-select-option>
             </ion-select>
