@@ -57,18 +57,6 @@ export class Tab1Page implements OnInit, OnDestroy {
     console.log('ioNViewWillEnterTab1');
   }
 
-  //   updateItem(item: Item) {
-  //     item.title = 'UPDATED: ${item.title}';
-
-
-  // // tslint:disable-next-line: variable-name
-  //     this.storageService.updateItem(item).then(_item => {
-  //       this.showToast('Item update!');
-  //       this.myList.closeSlidingItems();
-  //       this.loadItems();
-  //     });
-  //   }
-
 
   async showToast(msg) {
     const toast = await this.toastController.create({
@@ -109,24 +97,28 @@ filterCategory(event: any) {
   this.storageService.getItems().then((items: Item[]) => {
     this.selectedValue = event.target.value;
     if (this.selectedValue === 'technology') {
+    this.items = items;
     this.items = this.items.filter(item => {
       if (item.category === 'technology') {
         return this.storage.set(ITEMS_KEY, items);
       }
     });
   } else if (this.selectedValue === 'food') {
+    this.items = items;
     this.items = this.items.filter(item => {
       if (item.category === 'food') {
         return this.storage.set(ITEMS_KEY, items);
       }
     });
   } else if (this.selectedValue === 'clothes') {
+    this.items = items;
     this.items = this.items.filter(item => {
       if (item.category === 'clothes') {
         return this.storage.set(ITEMS_KEY, items);
       }
     });
   } else if (this.selectedValue === 'cosmetics') {
+    this.items = items;
     this.items = this.items.filter(item => {
       if (item.category === 'cosmetics') {
         return this.storage.set(ITEMS_KEY, items);
